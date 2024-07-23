@@ -4,9 +4,7 @@ let correo = document.getElementById("correo");
 let clave = document.getElementById("clave");
 let button = document.getElementById("registar");
 
-
 let credenciales = JSON.parse(localStorage.getItem("nombre")) || [];
-
 
 function guardar() {
     console.log('Esta llegando');
@@ -22,7 +20,6 @@ function guardar() {
         var apellidoValue = apellido.value;
         var correoValue = correo.value;
         var claveValue = clave.value;
-    
     
     if (nombreValue.trim() === '' || apellidoValue.trim() === '' || correoValue.trim() === '' || claveValue.trim() === '') {
         alert('Por favor completa todos los campos.');

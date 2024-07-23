@@ -1,28 +1,30 @@
-let nombre = document.getElementById("nombre")
-let correo = document.getElementById("correo")
-let clave = document.getElementById("clave")
-let boton = document.getElementById("login")
+let nombre = document.getElementById("nombre");
+let correo = document.getElementById("correo");
+let clave = document.getElementById("clave");
+let login = document.getElementById("login");
 
-let informacion = JSON.parse(localStorage.getItem("nommbre")) || []
+let informacion = JSON.parse(localStorage.getItem("datos")) || [];
 
-    function guardar() {
-        let data = {
-            nombre: nombre.value,
-            correo: correo.value,
-            clave: clave.value,
-        }
-
-        var nombreValue = nombre.value;
-        var correoValue = correo.value;
-        var claveValue = clave.value;
-
-        if (nombreValue.trim() === '' || correoValue.trim() === '' || claveValue.trim() === '') {
-            alert('Por favor complete todos los campos.');
-            console.log('Intento de registro fallido: Faltan datos.');
-        }
-        informacion.push(data)
-        localStorage.setItem("nombre", JSON.stringify(informacion))
+function guardar() {
+    // Verificar si algún campo está vacío
+    if (correo.value === '' || clave.value === '') {
+        alert('Por favor completa todos los campos.');
+        return; // Detener la función si hay campos vacíos
     }
 
-    login.addEventListener("click", guardar);
-    
+    let data = {
+        nombre: nombre.value,
+        correo: correo.value,
+        clave: clave.value,
+    };
+
+    informacion.push(data);
+    localStorage.setItem("datos", JSON.stringify(informacion));
+
+    // Limpiar los campos después de guardar si es necesario
+    nombre.value = '';
+    correo.value = '';
+    clave.value = '';
+}
+
+login.addEventListener("click", guardar);
