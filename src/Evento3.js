@@ -35,11 +35,19 @@ function agregarTarea(eventoIndex) {
     // Agregar la nueva tarea al evento seleccionado
     eventos[eventoIndex].tareas.push({
       nombre: tareaInput,
+      completa: false,
 
     });
     // Actualizar la interfaz después de agregar la tarea
     renderizarEventos();
   }
+}
+
+// Función para marcar una tarea como completada
+function completarTarea(eventoIndex, tareaIndex) {
+  eventos[eventoIndex].tareas[tareaIndex].completa = true;
+  // Actualizar la interfaz después de marcar la tarea como completada
+  renderizarEventos();
 }
 
 // Función para renderizar los eventos y sus tareas en la página
@@ -57,8 +65,13 @@ function renderizarEventos() {
       const tareaElement = document.createElement('div');
       tareaElement.textContent = tarea.nombre;
 
+      // Agregar una clase CSS según si la tarea está completada o no
+      if (tarea.completa) {
+        tareaElement.classList.add('completed');
+      }
+
       // Agregar un listener para marcar la tarea como completada al hacer clic en ella
-      tareaElement.addEventListener('click', () => (eventoIndex, tareaIndex));
+      tareaElement.addEventListener('click', () => completarTarea(eventoIndex, tareaIndex));
       eventoElement.appendChild(tareaElement);
     });
 

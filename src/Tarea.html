@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="/src/Tarea.css">
 </head>
 <body>
-    <form class="form">
-        <input class="inputs" type="text" placeholder="ingrese su ">
-        <input class="inputs" type="text" placeholder="ingrese su ">
-        <input class="inputs" type="text" placeholder="ingrese su ">
-        <input class="inputs" type="text" placeholder="ingrese su ">
-        <button id="tarea">Agregar tarea</button>
-    </form>
+    <section class="modal">
+        <div class="modal-container">
+            <h2 class="modal-tittle">Bienvenida</h2>
+            <label for="nombre">Nombre:</label>
+            <input class="modal-input" id="nombre" type="nombre" required>
+            <label for="correo">Correo:</label>
+            <input class="modal-input" id="correo" type="correo" required>
+            <label for="clave">Clave:</label>
+            <input class="modal-input" id="clave" type="clave" required>
+            <button class="modal-button" id="administrador">Administrador</button>
+        </div>
     
 <script src="/src/Tarea.js"></script>
 </body>
