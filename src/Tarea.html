@@ -8,6 +8,7 @@
 </head>
 <body>
     <section class="modal">
+        <form id="G-tarea">
         <div class="modal-container">
             <h2 class="modal-tittle">Bienvenida</h2>
             <label for="nombre">Nombre:</label>
@@ -18,7 +19,16 @@
             <input class="modal-input" id="clave" type="clave" required>
             <button class="modal-button" id="administrador">Administrador</button>
         </div>
+        </form>
+        <div>
+            
+            <input id="tarea" type="tarea" placeholder="ingrese su tarea">
+            <button id="agregar" onclick="subir()">Agregar Tarea</button>
+            <ul id="lista">
+
+            </ul>
+        </div>
     
-<script src="/src/Tarea.js"></script>
+<script src="/src/Tareas3.js"></script>
 </body>
 </html>

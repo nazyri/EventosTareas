@@ -49,3 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // administrador.addEventListener("click", guardar);
+
+
+
+
+
+// let credenciales = JSON.parse(localStorage.getItem("nombre")) || [];
