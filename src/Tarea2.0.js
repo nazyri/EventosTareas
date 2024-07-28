@@ -35,6 +35,5 @@ function ingresar() {
                 lista.appendChild(elementoLista)
                 elementoLista.appendChild(boton)
     });
-
 }
 

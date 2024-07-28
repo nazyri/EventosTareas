@@ -21,6 +21,7 @@ function guardar(event) {
         alert('Por favor completa todos los campos.');
         return; // Detiene la ejecución si hay campos vacíos
     }
+ 
 
     // Obtener datos existentes de localStorage o inicializar como un arreglo vacío
     let credenciales = JSON.parse(localStorage.getItem("credenciales")) || [];
@@ -38,4 +39,5 @@ function guardar(event) {
     clave.value = '';
 
     alert('Registro exitoso!');
+    window.location.href = 'L2.0.html';
 }

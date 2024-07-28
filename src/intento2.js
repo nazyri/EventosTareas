@@ -1,6 +1,6 @@
-let agregar = document.getElementById("agregar"); // boton
-let lista = document.getElementById("lista"); // div
-let tarea = document.getElementById("tarea"); // input
+let agregar = document.getElementById("agregar"); //boton
+let lista = document.getElementById("lista"); //div
+let tarea = document.getElementById("tarea"); //input
 
 // Cargar la información desde localStorage o inicializar como vacío
 let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
@@ -8,10 +8,8 @@ let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
 // Función para agregar una nueva tarea
 function agregarTarea(eventoIndex) {
     const nuevaTarea = prompt('Ingrese la nueva tarea:');
-    const fechaTarea = prompt('Ingrese la fecha de la tarea (YYYY-MM-DD):'); // Solicitar fecha
-
-    if (nuevaTarea && fechaTarea) {
-        eventos[eventoIndex].tareas.push({ nombre: nuevaTarea, fecha: fechaTarea }); // Almacenar fecha
+    if (nuevaTarea) {
+        eventos[eventoIndex].tareas.push({ nombre: nuevaTarea });
         localStorage.setItem("eventos", JSON.stringify(eventos));
         mostrarEventos();
     }
@@ -19,17 +17,13 @@ function agregarTarea(eventoIndex) {
 
 // Función para editar una tarea existente
 function editarTarea(eventoIndex, tareaIndex) {
-    const tareaActual = eventos[eventoIndex].tareas[tareaIndex];
-    const nuevaDescripcion = prompt('Editar tarea:', tareaActual.nombre);
-    const nuevaFecha = prompt('Editar fecha de la tarea (YYYY-MM-DD):', tareaActual.fecha); // Solicitar nueva fecha
+    const tareaActual = eventos[eventoIndex].tareas[tareaIndex].nombre;
+    const nuevaDescripcion = prompt('Editar tarea:', tareaActual);
     if (nuevaDescripcion) {
-        tareaActual.nombre = nuevaDescripcion;
+        eventos[eventoIndex].tareas[tareaIndex].nombre = nuevaDescripcion;
+        localStorage.setItem("eventos", JSON.stringify(eventos));
+        mostrarEventos();
     }
-    if (nuevaFecha) {
-        tareaActual.fecha = nuevaFecha; // Actualizar fecha
-    }
-    localStorage.setItem("eventos", JSON.stringify(eventos));
-    mostrarEventos();
 }
 
 // Función para agregar un nuevo evento
@@ -50,6 +44,7 @@ function subir() {
     tarea.value = '';
     mostrarEventos();
 }
+
 
 let logueado = false; // Variable de estado para controlar si el usuario ha iniciado sesión
 
@@ -94,7 +89,7 @@ function mostrarEventos() {
         let tareasLista = document.createElement('ul');
         evento.tareas.forEach((tarea, tareaIndex) => {
             let tareaElemento = document.createElement('li');
-            tareaElemento.textContent = `${tarea.nombre} - Fecha: ${tarea.fecha}`; // Mostrar la fecha
+            tareaElemento.textContent = tarea.nombre;
 
             let botonEditarTarea = document.createElement('button');
             botonEditarTarea.textContent = 'editar';
