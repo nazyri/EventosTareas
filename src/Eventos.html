@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Eventos</title>
-  <link rel="stylesheet" href="Eventos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/Tarea.css">
 </head>
+
 <body>
-  <section class="modal">
-    <div class="modal-container">
-        <h2 class="modal-tittle">Bienvenida</h2>
-        <label for="nombre">Nombre:</label>
-        <input class="modal-input" id="nombre" type="nombre" required>
-        <label for="correo">Correo:</label>
-        <input class="modal-input" id="correo" type="correo" required>
-        <label for="clave">Clave:</label>
-        <input class="modal-input" id="clave" type="clave" required>
-        <button class="modal-button" id="administrador">Administrador</button>
-    </div>
-</section>
+    <!-- <section class="modal"> -->
+        <form id="G-tarea">
+            <div class="modal-container">
+                <h2 class="modal-tittle">Bienvenida</h2>
+                <label for="nombre">Nombre:</label>
+                <input class="modal-input" id="nombre" type="nombre" required>
+                <label for="correo">Correo:</label>
+                <input class="modal-input" id="correo" type="correo" required>
+                <label for="clave">Clave:</label>
+                <input class="modal-input" id="clave" type="clave" required>
+                <button class="modal-button" id="administrador">Administrador</button>
+            </div>
+        </form>
 
-  <div id="app">
-    <h1>Lista de Eventos</h1>
-    <input type="text" id="eventInput" placeholder="Nombre del evento">
-    <button onclick="agregarEvento()">Agregar Evento</button>
-      <ul id="eventList"> <!-- Aquí se renderizarán los eventos y tareas --></ul>
-      </div>
+        <div>
+            <input id="tarea" type="tarea" placeholder="ingrese su tarea">
+            <button id="agregar" onclick="subir()">Agregar Tarea</button>
+            <div class="cuadro-grande">
+                <ul id="lista">
 
-  <script src="Eventos.js"></script>
+                </ul>
+            </div>
+        </div>
+        <!-- <p id="fecha"></p> -->
+
+        <script src="/src/Tareas3.js"></script>
 </body>
+
 </html>
