@@ -1,8 +1,9 @@
 
 
 body{
-    background-image: url(/src/imagenes/download\ \(4\).jpg);
+    background-image: url(/src/imagenes/planner-7256390_1920.jpg);
     background-size: cover;
+    margin-top: 200px;
 }
 
 .seccion{

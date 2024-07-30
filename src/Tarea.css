@@ -1,9 +1,9 @@
 .cuadro{
+    left: auto;
     border: solid 1px;
     text-align: center;
     width: 400px;
     margin: 10px auto;
-
 }
 
 .cuadro-grande{

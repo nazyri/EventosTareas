@@ -1,0 +1,19 @@
+body{
+    background-image: url(/src/imagenes/camera-1130731_1280.jpg);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.cuadro {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+button {
+margin-left: 5px;
+}
