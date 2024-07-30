@@ -1,161 +1,78 @@
-let agregar = document.getElementById("agregar"); // boton
-let lista = document.getElementById("lista"); // div
-let tarea = document.getElementById("tarea"); // input
-
-// Cargar la información desde localStorage o inicializar como vacío
-let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
-
-// Función para agregar una nueva tarea
-function agregarTarea(eventoIndex) {
-    const nuevaTarea = prompt('Ingrese la nueva tarea:');
-    const fechaTarea = prompt('Ingrese la fecha de la tarea (YYYY-MM-DD):'); // Solicitar fecha
-
-    if (nuevaTarea && fechaTarea) {
-        eventos[eventoIndex].tareas.push({ nombre: nuevaTarea, fecha: fechaTarea }); // Almacenar fecha
-        localStorage.setItem("eventos", JSON.stringify(eventos));
-        mostrarEventos();
-    }
-}
-
-// Función para editar una tarea existente
-function editarTarea(eventoIndex, tareaIndex) {
-    const tareaActual = eventos[eventoIndex].tareas[tareaIndex];
-    const nuevaDescripcion = prompt('Editar tarea:', tareaActual.nombre);
-    const nuevaFecha = prompt('Editar fecha de la tarea (YYYY-MM-DD):', tareaActual.fecha); // Solicitar nueva fecha
-    if (nuevaDescripcion) {
-        tareaActual.nombre = nuevaDescripcion;
-    }
-    if (nuevaFecha) {
-        tareaActual.fecha = nuevaFecha; // Actualizar fecha
-    }
-    localStorage.setItem("eventos", JSON.stringify(eventos));
-    mostrarEventos();
-}
+// Declaración de un arreglo para almacenar los eventos
+let eventos = [];
 
 // Función para agregar un nuevo evento
-function subir() {
-    let tareaInput = tarea.value.trim();
-    if (tareaInput === '') {
-        alert('Por favor completa todos los campos.');
-        return;
-    }
+function agregarEvento() {
+  // Obtener el valor del input y eliminar espacios en blanco al principio y al final
+  const eventoInput = document.getElementById('eventInput');
+  const nombreEvento = eventoInput.value.trim();
 
-    let nuevoEvento = {
-        nombre: tareaInput,
-        tareas: []
-    };
+  // Validar que el campo no esté vacío
+  if (nombreEvento === '') {
+    alert('Por favor, ingrese el nombre del evento.');
+    return;
+  }
 
-    eventos.push(nuevoEvento);
-    localStorage.setItem("eventos", JSON.stringify(eventos));
-    tarea.value = '';
-    mostrarEventos();
+  // Crear un nuevo objeto de evento y agregarlo al arreglo de eventos
+  const nuevoEvento = {
+    nombre: nombreEvento,
+    tareas: []
+  };
+
+  eventos.push(nuevoEvento);
+  eventoInput.value = '';
+
+  // Llamar a la función para renderizar los eventos en la página
+  renderizarEventos();
 }
 
-let logueado = false; // Variable de estado para controlar si el usuario ha iniciado sesión
+// Función para agregar una nueva tarea a un evento específico
+function agregarTarea(eventoIndex) {
+  // Solicitar al usuario que ingrese el nombre de la nueva tarea
+  const tareaInput = prompt('Ingrese la nueva tarea:');
+  const tareaInput2 = prompt('holaa')
+  if (tareaInput) {
+    // Agregar la nueva tarea al evento seleccionado
+    eventos[eventoIndex].tareas.push({
+      nombre: tareaInput,
 
-// Modificar la función para mostrar todos los eventos en la lista
-function mostrarEventos() {
-    lista.innerHTML = '';
-
-    eventos.forEach((evento, index) => {
-        let elementoLista = document.createElement('p');
-        elementoLista.textContent = evento.nombre;
-        elementoLista.classList.add('cuadro');
-
-        let botonEditar = document.createElement('button');
-        botonEditar.textContent = 'editar';
-
-        let botonDescripcion = document.createElement('button');
-        botonDescripcion.textContent = 'descripcion';
-        botonDescripcion.addEventListener('click', () => agregarTarea(index));
-
-        botonEditar.addEventListener('click', () => {
-            const nuevoNombreEvento = prompt('Editar nombre del evento:', evento.nombre);
-            if (nuevoNombreEvento) {
-                eventos[index].nombre = nuevoNombreEvento;
-                localStorage.setItem("eventos", JSON.stringify(eventos));
-                mostrarEventos();
-            }
-        });
-
-        // Mostrar el botón de eliminar solo si el usuario ha iniciado sesión
-        let botonEliminarDescripcion;
-        if (logueado) {
-            botonEliminarDescripcion = document.createElement('button');
-            botonEliminarDescripcion.textContent = 'eliminar';
-            botonEliminarDescripcion.addEventListener('click', () => {
-                eventos.splice(index, 1);
-                localStorage.setItem("eventos", JSON.stringify(eventos));
-                mostrarEventos();
-            });
-            elementoLista.appendChild(botonEliminarDescripcion);
-        }
-
-        let tareasLista = document.createElement('ul');
-        evento.tareas.forEach((tarea, tareaIndex) => {
-            let tareaElemento = document.createElement('li');
-            tareaElemento.textContent = `${tarea.nombre} - Fecha: ${tarea.fecha}`; // Mostrar la fecha
-
-            let botonEditarTarea = document.createElement('button');
-            botonEditarTarea.textContent = 'editar';
-            botonEditarTarea.addEventListener('click', () => editarTarea(index, tareaIndex));
-
-            // Mostrar el botón de eliminar tarea solo si el usuario ha iniciado sesión
-            let botonEliminarTarea;
-            if (logueado) {
-                botonEliminarTarea = document.createElement('button');
-                botonEliminarTarea.textContent = 'eliminar';
-                botonEliminarTarea.addEventListener('click', () => {
-                    eventos[index].tareas.splice(tareaIndex, 1);
-                    localStorage.setItem("eventos", JSON.stringify(eventos));
-                    mostrarEventos();
-                });
-            }
-
-            tareaElemento.appendChild(botonEditarTarea);
-            if (botonEliminarTarea) tareaElemento.appendChild(botonEliminarTarea); // Solo añadir si existe
-            tareasLista.appendChild(tareaElemento);
-        });
-
-        elementoLista.appendChild(botonDescripcion);
-        elementoLista.appendChild(botonEditar);
-        elementoLista.appendChild(tareasLista);
-        lista.appendChild(elementoLista);
     });
+    // Actualizar la interfaz después de agregar la tarea
+    renderizarEventos();
+  }
 }
 
-// Modificar la lógica de inicio de sesión
-document.addEventListener('DOMContentLoaded', function () {
-    let Gtarea = document.getElementById('G-tarea');
+// Función para renderizar los eventos y sus tareas en la página
+function renderizarEventos() {
+  const eventList = document.getElementById('eventList');
+  eventList.innerHTML = ''; // Limpiar la lista antes de volver a renderizar
 
-    Gtarea.addEventListener('submit', function (event) {
-        event.preventDefault();
+  // Iterar sobre todos los eventos y crear elementos HTML correspondientes
+  eventos.forEach((evento, eventoIndex) => {
+    const eventoElement = document.createElement('li');
+    eventoElement.textContent = evento.nombre;
 
-        let nombreInput = document.getElementById('nombre').value;
-        let correoInput = document.getElementById('correo').value;
-        let claveInput = document.getElementById('clave').value;
+    // Iterar sobre las tareas del evento actual y crear elementos para cada tarea
+    evento.tareas.forEach((tarea, tareaIndex) => {
+      const tareaElement = document.createElement('div');
+      tareaElement.textContent = tarea.nombre;
 
-        // Obtener usuarios registrados desde localStorage
-        let storedData = JSON.parse(localStorage.getItem('administrador')) || [];
-
-        // Buscar si las credenciales coinciden
-        let usuarioEncontrado = storedData.find(function (usuario) {
-            return usuario.nombre === nombreInput && usuario.correo === correoInput && usuario.clave === claveInput;
-        });
-
-        if (usuarioEncontrado) {
-            alert('Inicio de sesión exitoso!');
-            logueado = true; // Establecer el estado a iniciado sesión
-            mostrarEventos(); // Mostrar eventos para actualizar la vista
-        } else {
-            alert('Correo o contraseña incorrectos. Intenta nuevamente.');
-            logueado = false; // Asegurarse de que el estado esté en false si las credenciales son incorrectas
-        }
+      // Agregar un listener para marcar la tarea como completada al hacer clic en ella
+      tareaElement.addEventListener('click', () => (eventoIndex, tareaIndex));
+      eventoElement.appendChild(tareaElement);
     });
-});
 
-// Asignar la función al evento de clic del botón "Agregar"
-agregar.addEventListener("click", subir);
+    // Crear un botón para agregar una nueva tarea al evento actual
+    const nuevaTareaButton = document.createElement('button');
+    nuevaTareaButton.textContent = 'Agregar Descripciones';
+    nuevaTareaButton.addEventListener('click', () => agregarTarea(eventoIndex));
 
-// Mostrar eventos al cargar la página
-mostrarEventos();
+    eventoElement.appendChild(nuevaTareaButton);
+
+    // Agregar el elemento del evento a la lista principal de eventos
+    eventList.appendChild(eventoElement);
+  });
+}
+
+// Al cargar la página, intentar cargar eventos desde almacenamiento local si existen
+document.addEventL

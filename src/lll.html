@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Eventos y Tareas</title>
+    <style>
+        /* Estilos básicos para el diseño */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .cuadro {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gestor de Eventos</h1>
+    <input type="text" id="evento" placeholder="Nombre del evento" required>
+    <button id="guardarEvento">Agregar Evento</button>
+    <div id="arregloEventos"></div>
+
+    <h1>Gestor de Tareas</h1>
+    <input type="text" id="tarea" placeholder="Nombre de la tarea" required>
+    <input type="text" id="fechaTarea" placeholder="Fecha de la tarea (YYYY-MM-DD)" required>
+    <button id="guardarTarea">Agregar Tarea</button>
+    <div id="arregloTareas"></div>
+
+    <script src="lll.js"></script>
+</body>
+</html>

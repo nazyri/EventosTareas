@@ -1,17 +1,12 @@
-*{
 
-    box-sizing: border-box;
-}
 
 body{
-    background-image: url(/imagenes/avenue-815297_640.jpg);
+    background-image: url(/src/imagenes/download\ \(4\).jpg);
     background-size: cover;
-   
 }
 
 .seccion{
     width: 400px;
-    background-color: #aaa;
     padding: 30px;
     margin: auto;
     margin-top: 100px;
@@ -28,7 +23,7 @@ h1{
 
 .inicio{
     width: 100%;
-    background-color: #aaa;
+    background-color: #aab5ca;
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 16px;
@@ -39,7 +34,7 @@ h1{
 
 button{
     width: 100%;
-    background-color: #3c2048;
+    background-color: #70a19f;
     border: none;
     padding: 12px;
     color: white;
