@@ -1,24 +1,17 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
     background-image: url(/imagenes/avenue-815297_640.jpg);
     background-size: cover;
    
 }
 
-.conteiner{
+#loginForm{
     width: 400px;
-    background-color: #aaa;
     padding: 30px;
     margin: auto;
     margin-top: 100px;
     border-radius: 4px;
     font-family: 'calibri';
-    color: white;
+    color: black;
     box-shadow: 7px 13px 37px #000;
 }
 
@@ -27,8 +20,8 @@ h1{
     margin-bottom: 20px;
 }
 
-.cuenta{
-    width: 100%;
+.container{
+
     background-color: #aaa;
     padding: 10px;
     border-radius: 4px;
@@ -39,7 +32,6 @@ h1{
 }
 
 button{
-    width: 100%;
     background-color: #3c2048;
     border: none;
     padding: 12px;

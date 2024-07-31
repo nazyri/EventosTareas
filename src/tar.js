@@ -93,7 +93,7 @@ function mostrarEventos() {
             botonEditarTarea.addEventListener('click', () => editarTarea(index, tareaIndex));
 
             let botonEliminarDescripcion = document.createElement('button');
-            botonEliminarDescripcion.textContent = 'eliminar';
+            botonEliminarDescripcion.textContent = 'eliminar22';
             botonEliminarDescripcion.addEventListener('click', () => {
                 eventos[index].tareas.splice(tareaIndex, 1);
                 localStorage.setItem("eventos", JSON.stringify(eventos));

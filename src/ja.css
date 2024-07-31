@@ -12,8 +12,31 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-
+    color: #e6e2e2;
 }
 button {
 margin-left: 5px;
+}
+
+.container {
+    display: inline-block;
+    width: 65%;
+    margin: 20px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 10px; /* Espacio entre elementos */
+}
+
+.evento, .tarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }
