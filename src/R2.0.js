@@ -4,6 +4,9 @@ let correo = document.getElementById("correo");
 let clave = document.getElementById("clave");
 let button = document.getElementById("registrar");
 
+// Obtener datos existentes de localStorage o inicializar como un arreglo vacío
+let credenciales = JSON.parse(localStorage.getItem("credenciales")) || [];
+
 button.addEventListener("click", guardar);
 
 function guardar(event) {
@@ -21,10 +24,6 @@ function guardar(event) {
         alert('Por favor completa todos los campos.');
         return; // Detiene la ejecución si hay campos vacíos
     }
- 
-
-    // Obtener datos existentes de localStorage o inicializar como un arreglo vacío
-    let credenciales = JSON.parse(localStorage.getItem("credenciales")) || [];
 
     // Agregar nuevos datos al arreglo
     credenciales.push(data);

@@ -1,12 +1,11 @@
 body{
     background-image: url(/src/imagenes/camera-1130731_1280.jpg);
-}
-
-body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f9f9f9;
 }
+
+
 .cuadro {
     margin: 10px 0;
     padding: 10px;
@@ -20,12 +19,13 @@ margin-left: 5px;
 
 .container {
     display: inline-block;
-    width: 65%;
+    width: 95%;
     margin: 20px;
 }
 
 .titulo {
     text-align: center;
+    color: white;
 }
 
 .grid-container {
@@ -39,4 +39,14 @@ margin-left: 5px;
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 5px;
+}
+
+.eliminarDescripcion{
+    margin-left: 100px;
+    margin: 10px;
+    color: purple;
+}
+
+#G-tarea{
+    color: white;
 }

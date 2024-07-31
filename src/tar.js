@@ -6,8 +6,9 @@ let tarea = document.getElementById("tarea"); //input
 let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
 
 // Función para agregar una nueva tarea
+//
 function agregarTarea(eventoIndex) {
-    const nuevaTarea = prompt('Ingrese la nueva tarea:');
+    const nuevaTarea = prompt('Ingrese la nueva tarea22:');
     if (nuevaTarea) {
         eventos[eventoIndex].tareas.push({ nombre: nuevaTarea });
         localStorage.setItem("eventos", JSON.stringify(eventos));
