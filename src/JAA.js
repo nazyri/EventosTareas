@@ -165,9 +165,6 @@ function editarEvento(index) {
     if (nuevoNombreEvento) {
         eventos[index].nombre = nuevoNombreEvento;
     }
-    if (nuevaDescripcionEvento) {
-        eventos[index].descripcion = nuevaDescripcionEvento;
-    }
     if (nuevaFechaEvento) {
         eventos[index].fecha = nuevaFechaEvento;
     }

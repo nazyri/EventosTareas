@@ -24,19 +24,25 @@ function guardar(event) {
         alert('Por favor completa todos los campos.');
         return; // Detiene la ejecución si hay campos vacíos
     }
+    
+    let existe = credenciales.find(user => user.nombre === data.nombre || user.correo === data.correo); // Verifica solo el correo
 
-    // Agregar nuevos datos al arreglo
-    credenciales.push(data);
-
-    // Guardar en localStorage
-    localStorage.setItem("credenciales", JSON.stringify(credenciales));
+    if (existe) {
+        alert("El usuario ya existe");
+    } else {
+        // Agregar nuevos datos al arreglo
+        credenciales.push(data);
+    
+        // Guardar en localStorage
+        localStorage.setItem("credenciales", JSON.stringify(credenciales));
+        alert("Usuario registrado con éxito");
+        window.location.href = 'L2.0.html';
+    }
 
     // Limpiar los campos después de guardar
     nombre.value = '';
     apellido.value = '';
     correo.value = '';
     clave.value = '';
-
-    alert('Registro exitoso!');
-    window.location.href = 'L2.0.html';
 }
+
