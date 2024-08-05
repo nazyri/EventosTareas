@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (usuarioEncontrado) {
             // Si las credenciales son correctas, redirigir a la siguiente página
             alert('Inicio de sesión exitoso!');
-            window.location.href = 'tareas2.html'; // Cambia 'siguiente-pagina.html' por la URL de tu siguiente página
+            window.location.href = 'ja.html'; // Cambia 'ja.html' por la URL de tu siguiente página
         } else {
             // Si las credenciales son incorrectas, mostrar un mensaje de error
             alert('Correo o contraseña incorrectos. Intenta nuevamente.');

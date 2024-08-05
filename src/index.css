@@ -1,0 +1,9 @@
+body{
+    background-image: url(/src/imagenes/notebook-1130742_1280.jpg);
+    background-size: cover;
+}
+
+.container{
+    text-align: center;
+    margin-top: 400px;
+}
